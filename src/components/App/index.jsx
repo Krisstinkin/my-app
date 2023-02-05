@@ -1,62 +1,82 @@
 import Header from "components/Header";
-import Student from "components/Student";
+import Product from "components/Goods";
 import Footer from "components/Footer";
+import ButtonAdd from "components/ButtonAdd";
 import { useState } from "react";
 
-function App() {
-   const [students, setStudents] = useState([
+export function App() {
+   const [products, setProducts] = useState([
     {
       id: 1,
-      firstName: "Анна",
-      lastName: "Иванова",
-      age: 12,
-      course: "Рисование"
+      firstName: "Молоко",
+      lastName: "1,5%",
+      weigth: 900,
+      course: "Молочные товары"
     },
     {
       id: 2,
-      firstName: "Олег",
-      lastName: "Петров",
-      age: 32,
-      course: "Программирование"
+      firstName: "Хлеб",
+      lastName: "Ржаной",
+      weigth: 290,
+      course: "Хлебобулочные изделия"
     },
     {
       id: 3,
-      firstName: "Ирина",
-      lastName: "Семенова",
-      age: 28,
-      course: "Программирование"
+      firstName: "Шоколад",
+      lastName: "Горький",
+      weigth: 70,
+      course: "Кондитерские товары"
     },
     {
       id: 4,
-      firstName: "Екатерина",
-      lastName: "Степанова",
-      age: 30,
-      course: "Психология"
+      firstName: "Творог",
+      lastName: "5%",
+      weigth: 200,
+      course: "Молочные товары"
+    },
+    {
+      id: 5,
+      firstName: "Мандарины",
+      lastName: "Мароканские",
+      weigth: 500,
+      course: "Фрукты"
     }
    ])
 
-   const deleteStudent = (id) => {
-      const filteredStudents = students.filter(student => student.id !== id)
-      setStudents(filteredStudents)
+   const deleteProduct = (id) => {
+      const filteredProducts = products.filter(product => product.id !== id)
+      setProducts(filteredProducts)
    }
 
     return (
         <div>
           <Header />
           <div className="mx-10 max-w-screen-lg mx-auto min-h-screen">
-            {students.length === 0 && (
-              <div className="mt-20 text-center text-7xl text-gray-300 font-thin">Нет студентов</div>
+            {products.length === 0 && (
+              <div className="mt-20 text-center text-7xl text-gray-300 font-thin">Список покупок пуст</div>
             )}
-            {students.length > 0 && students.map((student) => {
+            {products.length > 0 && products.map((product) => {
               return (
-                <Student key={student.id} student={student} deleteStudent={deleteStudent} />
+                <Product key={product.id} product={product} deleteProduct={deleteProduct} />
               )
             })}
           </div>
           <Footer />
         </div>
     );
+    
 }
 
-export default App;
+export function Add() {
+ 
+  const [buttonText, setButtonText] = useState("Добавить");
+  const changeText = (text) => setButtonText(text);
+
+  return (
+    <ButtonAdd onClick={() => changeText("Добавлено")}>{buttonText}</ButtonAdd>
+  )
+}
+
+
+
 

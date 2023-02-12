@@ -49,23 +49,8 @@ function App() {
 
    const deleteStudent = (id) => {
       const filteredStudents = students.filter(student => student.id !== id)
-      setStudents(filteredStudents)
+      setStudents(filteredStudents) //обновляем наше состояние - передаем наш отфильтрованный массив. setStudents и придуман именно для того, чтобы мы в него могли передавать переделанный массив
    }
-
-   const changeAdd = (id) => {
-    let arr2 = JSON.parse(JSON.stringify(products))
-    const addProduct = arr2.find(product => product.id === id);
-
-      if (addProduct.buttonText === "Добавить") {
-
-        addProduct.buttonText = "Добавлено";
-
-      } else 
-
-      (addProduct.buttonText = "Добавить");
-
-    setProducts(arr2)
-  }  
 
   return (
         <div>
@@ -86,16 +71,9 @@ function App() {
     
 }
 
-export function Add() {
- 
-  const [buttonText, setButtonText] = useState("Добавить");
-  const changeText = (text) => setButtonText(text);
+export default App;
 
-  return (
-    <ButtonAdd onClick={() => changeText("Добавлено")}>{buttonText}</ButtonAdd>
-  )
-}
-
-
-
+//map это тоже самое, что и forEach - формирует новый массив из того, что мы здесь возвращаем
+// вот этой записью <Student student={student} /> мы как будто вызываем функцию, которая отрисует нам студента. Просто недостаточно передать <Student /> - получим только HTML
+//React всем дает ключи (key) для быстрой отрисовки изменений произошедших. Поэтому надо незабывать давать вот это состояние компонентам key={student.id}. Иначе он не поймет какой студент изменяется
 

@@ -1,5 +1,7 @@
+//если не добавить props со значениями product и deleteProduct и changebuttonText, то ничего работать не будет. Т.к. мы эти свойства написали на другом листе - сюда их необходимо добавить. По логике с областью видимости.
+
 const Product = (props) => {
-    const { product, deleteProduct, changeAdd } = props
+    const { product, deleteProduct, changeButtonText } = props
 
     return (
         <div className="bg-indigo-50 mt-10 py-6 px-8 rounded-md shadow-md flex justify-between">
@@ -11,12 +13,14 @@ const Product = (props) => {
 
             <div className="flex flex-row mt-8 items-start">
                 <a className="hover:underline cursor-pointer bg-indigo-200 text-indigo-800 font-semibold rounded-sm px-4 py-2 mb-4 shadow" onClick={() => deleteProduct(product.id)}>Удалить</a>
-                <a className="hover:underline cursor-pointer bg-indigo-200 text-indigo-800 font-semibold rounded-sm px-4 py-2 shadow" onClick={() => changeAdd(product.id)}>{product.buttonText}</a>
+                <a className="hover:underline cursor-pointer bg-indigo-200 text-indigo-800 font-semibold rounded-sm px-4 py-2 shadow" onClick={() => changeButtonText(product.id)}>{product.buttonText}</a>
             </div>
         </div>
     )
 }
 
 export default Product
+
+// если onClick написать вот так onClick={deleteProduct(product.id)}, то все продукты удаляться. Потому что он дойдет до первой же карточки с продуктами и все удалит. Надо добавить анонимную функцию () =>. 
 
 

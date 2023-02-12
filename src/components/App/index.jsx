@@ -47,9 +47,25 @@ function App() {
     }
    ])
 
-   const deleteStudent = (id) => {
-      const filteredStudents = students.filter(student => student.id !== id)
-      setStudents(filteredStudents) //обновляем наше состояние - передаем наш отфильтрованный массив. setStudents и придуман именно для того, чтобы мы в него могли передавать переделанный массив
+   const deleteProduct = (id) => {
+      const filteredProducts = products.filter(product => product.id !== id) //логика от обратного - покажем массив без того продукта, который удалили
+      setProducts(filteredProducts) //обновляем наше состояние - передаем наш отфильтрованный массив. setProducts и придуман именно для того, чтобы мы в него могли передавать переделанный массив
+   }
+
+   const changeButtonText = (id) => {
+
+      let productsJson = JSON.parse(JSON.stringify(products))
+
+      const productsAdd = productsJson.find(product => product.id === id);
+
+        if (productsAdd.buttonText === "Добавить") {
+
+          productsAdd.buttonText = "Добавлено";
+
+      } else 
+          (productsAdd.buttonText = "Добавить");
+
+      setProducts(productsJson)
    }
 
   return (
@@ -61,7 +77,7 @@ function App() {
             )}
             {products.length > 0 && products.map((product) => {
               return (
-                <Product key={product.id} product={product} deleteProduct={deleteProduct} changeAdd={changeAdd} />
+                <Product key={product.id} product={product} deleteProduct={deleteProduct} changeButtonText={changeButtonText} />
               )
             })}
           </div>
@@ -74,6 +90,6 @@ function App() {
 export default App;
 
 //map это тоже самое, что и forEach - формирует новый массив из того, что мы здесь возвращаем
-// вот этой записью <Student student={student} /> мы как будто вызываем функцию, которая отрисует нам студента. Просто недостаточно передать <Student /> - получим только HTML
-//React всем дает ключи (key) для быстрой отрисовки изменений произошедших. Поэтому надо незабывать давать вот это состояние компонентам key={student.id}. Иначе он не поймет какой студент изменяется
+//вот этой записью <Product product={product} /> мы как будто вызываем функцию, которая отрисует нам карточку с продуктом. Просто недостаточно передать <Product /> - получим только HTML
+//React всем дает ключи (key) для быстрой отрисовки изменений произошедших. Поэтому надо незабывать давать вот это состояние компонентам key={product.id}. Иначе он не поймет какой продукт изменяется
 

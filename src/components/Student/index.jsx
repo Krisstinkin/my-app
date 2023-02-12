@@ -1,3 +1,5 @@
+//если не добавить props со значениями student и deleteStudent, то ничего работать не будет. Т.к. мы эти свойства написали на другом листе - сюда их необходимо добавить. По логике с областью видимости.
+
 const Student = (props) => {
     const { student, deleteStudent } = props
 
@@ -15,3 +17,5 @@ const Student = (props) => {
 }
 
 export default Student
+
+// если onClick написать вот так onClick={deleteStudent(student.id)}, то все студенты удаляться. Потому что он дойдет до первого же студента и все удалит. Надо добавить функцию () =>. 

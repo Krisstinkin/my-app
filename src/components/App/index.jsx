@@ -47,9 +47,9 @@ function App() {
     }
    ])
 
-   const deleteProduct = (id) => {
-      const filteredProducts = products.filter(product => product.id !== id)
-      setProducts(filteredProducts)
+   const deleteStudent = (id) => {
+      const filteredStudents = students.filter(student => student.id !== id)
+      setStudents(filteredStudents)
    }
 
    const changeAdd = (id) => {
@@ -86,14 +86,15 @@ function App() {
     
 }
 
-export default App;
+export function Add() {
+ 
+  const [buttonText, setButtonText] = useState("Добавить");
+  const changeText = (text) => setButtonText(text);
 
-// const [buttonText, setButtonText] = useState("Добавить");
-//   const changeText = (text) => setButtonText(text);
-
-//   return (
-//     <ButtonAdd onClick={() => changeText("Добавлено")}>{buttonText} />
-//   )
+  return (
+    <ButtonAdd onClick={() => changeText("Добавлено")}>{buttonText}</ButtonAdd>
+  )
+}
 
 
 

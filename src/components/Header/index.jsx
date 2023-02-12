@@ -6,16 +6,16 @@ const Header = () => {
             <div className="max-w-screen-lg flex justify-between mx-auto px-10">
                 <nav className="flex gap-8 justify-center items-center">
                 <div>
-                    Список студентов
+                    Все покупки
                 </div>
                 <div>
-                    Контакты
+                    Покупки супермаркет
                 </div>
                 <div>
-                    Отзывы
+                    Покупки бьюти
                 </div>
                 </nav>
-                <Button title='Связаться с нами'/>
+                <Button title='Избранное'/>
             </div>
         </header>
     )
